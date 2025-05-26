@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .bg-custom-color {
+    @apply bg-[#8047e5];
+    @apply dark:bg-[#8047e5];
+  }
+
+  /* .dark:bg-custom-color {
+    @apply dark:bg-[#8047e5];
+  } */
+
+  .text-custom-color {
+    @apply text-[#8047e5];
+  }
+}
+
+.container {
+  @apply max-w-screen-xl mx-auto px-3;
+}

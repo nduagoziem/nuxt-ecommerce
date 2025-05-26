@@ -1,0 +1,38 @@
+/* *
+* Global color classes
+* Enhances color customization for different brands
+* Three main colors for text and background
+*/
+
+/* Color 1 */
+.bg-baseColor {
+    background-color: #000000;
+} 
+.text-baseColor {
+    color: #000000;
+}
+
+/* Color 2 */
+.bg-midColor {
+    background-color: #FFFFFF;
+}
+.text-midColor {
+    color: #FFFFFF;
+}
+
+/* Color 3 */
+.bg-lowerColor {
+    /* background-color: #FF1493; */
+    /* background-color: #7851A9; */
+    background-color:  #8047e5;
+    /* background-color: #C0C0C00C; */
+    /* background-color: #E2E5E6; */
+
+}
+.text-lowerColor {
+    /* color: #FF1493; */
+    /* color: #7851A9; */
+    color: #8047e5;
+    /* color: #C0C0C00C; */
+    /* color: #E2E5E6; */
+}
