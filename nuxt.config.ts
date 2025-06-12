@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from "@tailwindcss/vite";
+import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -25,13 +26,4 @@ export default defineNuxtConfig({
     }
   },
 
-  // modules: ['@nuxtjs/color-mode'],
-
-  // colorMode: {
-  //   classSuffix: '', // Ensures the 'dark' class is applied directly
-  //   preference: 'system',
-  //   fallback: 'light',
-  //   dataValue: 'theme',
-  //   storageKey: 'nuxt-color-mode'
-  // }
 });

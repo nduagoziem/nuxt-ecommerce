@@ -15,7 +15,7 @@ definePageMeta({
 
     <main class="dark:text-gray-400">
       <div class="container mx-auto px-4">
-        <SearchBar class="mt-5 mb-6" />
+        <SearchBar class="mt-5 mb-6" :placeholder="'Looking for a tablet...'" />
         <h1 class="mb-10 text-center font-semibold dark:text-white">
           SHOP PREMIUM Tablets
         </h1>
@@ -1673,7 +1673,7 @@ definePageMeta({
             </details>
           </div>
         </div>
-        <div class="flex justify-center mt-5">
+        <div class="flex justify-center mt-5 py-3">
           <Pagination />
         </div>
       </div>

@@ -190,7 +190,7 @@ definePageMeta({
                             </details>
                         </div>
                     </div>
-                    <NuxtLink :to="$config.public.appURL">
+                    <NuxtLink to="/categories/tablets">
                         <p class="text-center font-mono mb-5 text-pretty underline dark:text-gray-400">View All</p>
                     </NuxtLink>
 
@@ -251,7 +251,7 @@ definePageMeta({
                             </details>
                         </div>
                     </div>
-                    <NuxtLink :to="$config.public.appURL">
+                    <NuxtLink to="/categories/accessories">
                         <p class="text-center font-mono pb-5 text-pretty underline dark:text-gray-400">View All</p>
                     </NuxtLink>
                 </div>
