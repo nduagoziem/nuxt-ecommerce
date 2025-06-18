@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 definePageMeta({
     layout: "user-layout",
@@ -38,7 +38,7 @@ onMounted(
         <main>
             <div class="container mx-auto px-4">
 
-                <div class="flex items-center justify-center h-124">
+                <div class="flex items-center justify-center h-136 md:h-160">
                     <div class="w-full max-w-sm space-y-4">
                         <div class="flex justify-around">
                             <button @click="showRegisterComponent"
