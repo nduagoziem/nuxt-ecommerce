@@ -6,7 +6,7 @@ definePageMeta({
 });
 
 const config = useRuntimeConfig();
-const { data } = await useFetch(`${config.public.apiBase}/accessories`);
+const { data: response } = await useFetch(`${config.public.apiBase}/accessories?fields[]=name&fields[]=price&per_page=4`);
 </script>
 
 <template>
@@ -23,13 +23,14 @@ const { data } = await useFetch(`${config.public.apiBase}/accessories`);
                     SHOP PREMIUM TECH ACCESSORIES
                 </h1>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 lg:gap-4 mb-4">
-                    <div class="w-full flex flex-col" v-for="data in data.data" :key="data.id">
-                        <div
-                            class="flex items-center justify-center w-40 h-40 md:w-52 md:h-52 xl:w-72 xl:h-72 bg-gray-100 rounded overflow-hidden">
-                            <img :src="Array.isArray(data.accessories_images) ? data.accessories_images[0] : []" :alt="data.name"
-                                class="object-cover w-full h-full" />
-                        </div>
+                    <div class="w-full flex flex-col" v-for="data in response.data" :key="data.hashid">
+                        <a :href="`/categories/accessories/${data.hashid}`">
+                            <div
+                                class="flex items-center justify-center w-40 h-40 md:w-52 md:h-52 xl:w-72 xl:h-72 bg-gray-100 rounded overflow-hidden">
+                                <img :src="data.media[0].original_url" class="object-cover w-full h-full" />
+                            </div>
 
+                        </a>
                         <details class="hover:cursor-pointer">
                             <p class="text-left font-semibold break-words">
                                 {{ data.name }}
