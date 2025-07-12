@@ -1,12 +1,6 @@
 <template>
-    <div class="self-center text-custom-color text-2xl font-semibold whitespace-nowrap dark:text-white">
+    <div class="self-center text-[#8047e5] text-2xl font-semibold whitespace-nowrap">
         <!-- <img src="" alt="Application Logo" class="logo" /> -->
         Gadgets Hub
     </div>
 </template>
-
-<!-- <style scoped>
-    .logo {
-        width: 200px;
-    }
-</style> -->

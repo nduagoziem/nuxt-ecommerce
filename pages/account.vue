@@ -44,10 +44,10 @@ onMounted(
                             <button @click="showRegisterComponent"
                                 class="px-3 py-2 hover:cursor-pointer block bg-black rounded-md text-white dark:bg-gray-900">Register</button>
                             <button @click="showLoginComponent"
-                                class="px-3 py-2 hover:cursor-pointer block rounded-md text-white bg-custom-color">Login</button>
+                                class="px-3 py-2 hover:cursor-pointer block rounded-md text-white bg-[#8047e5]">Login</button>
                         </div>
-                        <LoginComponent v-if="activeComponent === 'login'"/>
-                        <RegisterComponent v-if="activeComponent === 'register'"/>
+                        <LoginComponent v-if="activeComponent === 'login'" />
+                        <RegisterComponent v-if="activeComponent === 'register'" />
                     </div>
                 </div>
             </div>

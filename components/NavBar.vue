@@ -38,16 +38,16 @@ onMounted(() => {
 <template>
     <nav class="bg-gray-200 border-gray-200 dark:bg-black" id="nav">
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
-            <NuxtLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <ApplicationLogo />
-            </NuxtLink>
+            </a>
             <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <!-- <button id="theme-toggle" type="button" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">
                     <DarkThemeIcon id="theme-toggle-dark-icon" class="w-5 h-5" />
                     <LightThemeIcon id="theme-toggle-light-icon" class="hidden w-5 h-5" />
                 </button> -->
                 <button>
-                    <CartIcon />
+                    <CartIcon class="hover:cursor-pointer" />
                 </button>
                 <button data-collapse-toggle="mega-menu" type="button" @click="toggleMenu"
                     class="inline-flex items-center focus:outline-none p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100  dark:text-gray-400"
@@ -68,7 +68,7 @@ onMounted(() => {
                     <!-- Menu 1 -->
                     <li>
                         <button id="mega-menu-dropdown-button-1" data-dropdown-toggle="mega-menu-dropdown-1"
-                            class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
+                            class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#8047e5] md:p-0 dark:text-white md:dark:hover:text-[#8047e5] dark:hover:bg-gray-700 dark:hover:text-[#8047e5] md:dark:hover:bg-transparent dark:border-gray-700">
                             PCs <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -80,72 +80,72 @@ onMounted(() => {
                             <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
                                 <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
                                     <li>
-                                        <NuxtLink to="/categories/pc/apple"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/pc/apple"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Apple
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/pc/hp"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/pc/hp"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             HP
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/pc/dell"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/pc/dell"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Dell
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/pc/lenovo"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/pc/lenovo"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Lenovo
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
                                 <ul class="space-y-4">
                                     <li>
-                                        <NuxtLink to="/categories/pc/asus"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/pc/asus"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             ASUS
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/pc/samsung"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/pc/samsung"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Samsung
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/pc/acer"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/pc/acer"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Acer
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/pc/msi"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/pc/msi"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             MSI
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="p-4">
                                 <ul class="space-y-4">
                                     <li>
-                                        <NuxtLink to="/categories/pc/chromebook"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/pc/chromebook"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Chromebook
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="#"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="#"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
 
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -155,7 +155,7 @@ onMounted(() => {
                     <!-- Menu 2-->
                     <li>
                         <button id="mega-menu-dropdown-button-2" data-dropdown-toggle="mega-menu-dropdown-2"
-                            class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
+                            class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#8047e5] md:p-0 dark:text-white md:dark:hover:text-[#8047e5] dark:hover:bg-gray-700 dark:hover:text-[#8047e5] md:dark:hover:bg-transparent dark:border-gray-700">
                             Phones <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -167,78 +167,78 @@ onMounted(() => {
                             <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
                                 <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button-2">
                                     <li>
-                                        <NuxtLink to="/categories/phones/samsung"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/phones/samsung"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Samsung
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/phones/ios"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/phones/ios"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             iOS
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/phones/tecno"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/phones/tecno"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Tecno
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/phones/itel"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/phones/itel"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             itel
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
                                 <ul class="space-y-4">
                                     <li>
-                                        <NuxtLink to="/categories/phones/infinix"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/phones/infinix"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Infinix
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/phones/redmi"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/phones/redmi"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Redmi
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/phones/huawei"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/phones/huawei"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Huawei
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/phones/vivo"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/phones/vivo"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Vivo
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="p-4">
                                 <ul class="space-y-4">
                                     <li>
-                                        <NuxtLink to="/categories/phones/oppo"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/phones/oppo"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Oppo
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="#"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="#"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
 
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/phones/nokia"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/phones/nokia"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Nokia
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -248,7 +248,7 @@ onMounted(() => {
                     <!-- Menu 3 -->
                     <li>
                         <button id="mega-menu-dropdown-button-3" data-dropdown-toggle="mega-menu-dropdown-3"
-                            class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
+                            class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#8047e5] md:p-0 dark:text-white md:dark:hover:text-[#8047e5] dark:hover:bg-gray-700 dark:hover:text-[#8047e5] md:dark:hover:bg-transparent dark:border-gray-700">
                             Tablets <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -260,50 +260,44 @@ onMounted(() => {
                             <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
                                 <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button-3">
                                     <li>
-                                        <NuxtLink to="/categories/tablets/ipad"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/tablets/ipad"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             iPad
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/tablets/samsung"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/tablets/samsung"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Samsung Tablets
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/tablets/acer"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/tablets/acer"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Acer Tablets
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/tablets/dell"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/tablets/dell"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Dell Tablets
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
                                 <ul class="space-y-4">
                                     <li>
-                                        <NuxtLink to="/categories/tablets/infinix"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/tablets/infinix"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             Infinix Tablets
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/categories/tablets/hp"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                        <a href="/categories/tablets/hp"
+                                            class="text-gray-500 dark:text-gray-400 hover:text-[#8047e5] dark:hover:text-[#8047e5]">
                                             HP Tablets
-                                        </NuxtLink>
-                                    </li>
-                                    <li>
-                                        <NuxtLink to="/categories/tablets/google-tablets"
-                                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                            Google Tablets
-                                        </NuxtLink>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -312,16 +306,16 @@ onMounted(() => {
 
                     <!-- Menu 4 -->
                     <li>
-                        <NuxtLink to="/categories/accessories"
-                            class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
-                            Accessories</NuxtLink>
+                        <a href="/categories/accessories"
+                            class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#8047e5] md:p-0 dark:text-white md:dark:hover:text-[#8047e5] dark:hover:bg-gray-700 dark:hover:text-[#8047e5] md:dark:hover:bg-transparent dark:border-gray-700">
+                            Accessories</a>
                     </li>
 
                     <!-- Menu 4 -->
                     <li>
-                        <NuxtLink to="/account"
-                            class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
-                            Login</NuxtLink>
+                        <a href="/account"
+                            class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#8047e5] md:p-0 dark:text-white md:dark:hover:text-[#8047e5] dark:hover:bg-gray-700 dark:hover:text-[#8047e5] md:dark:hover:bg-transparent dark:border-gray-700">
+                            Login</a>
                     </li>
                 </ul>
             </div>

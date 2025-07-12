@@ -19,7 +19,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      appURL: "https://nuxt-ecommerce-seven.vercel.app",
+      appURL: "http://localhost:3000",
       apiBase: "http://localhost:8000/api",
       appName: "Gadgets Hub",
     },
