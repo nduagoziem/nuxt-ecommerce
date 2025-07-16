@@ -22,8 +22,8 @@ const isOpen = ref(false)
         </button>
     <div id="collapseExample" class="transition-all border-b border-gray-400 dark:border-gray-800 duration-300 overflow-hidden"
         :class="isOpen ? 'opacity-100' : 'max-h-0 opacity-0'">
-        <div class="dark:bg-transparent rounded shadow p-4 mt-2">
-            {{ props.description }}
+        <div class="dark:bg-transparent rounded shadow p-4 mt-2" v-html="props.description">
+        
         </div>
     </div>
 </template>

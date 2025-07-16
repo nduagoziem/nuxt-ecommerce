@@ -7,7 +7,7 @@ definePageMeta({
 
 const config = useRuntimeConfig()
 
-const { data: response } = await useFetch(`${config.public.apiBase}/pcs?fields[]=name&fields[]=price&fields[]=brand&per_page=4`);
+const { data: response } = await useFetch(`${config.public.apiBase}/pcs?fields[]=name&fields[]=price&fields[]=brand`);
 </script>
 
 <template>
@@ -28,7 +28,7 @@ const { data: response } = await useFetch(`${config.public.apiBase}/pcs?fields[]
             <a :href="`/categories/pcs/${data.brand}/${data.hashid}`">
               <div
                 class="flex items-center justify-center w-40 h-40 md:w-52 md:h-52 xl:w-72 xl:h-72 bg-gray-100 rounded overflow-hidden">
-                <img :src="data.media[0].original_url" class="object-cover w-full h-full" />
+                <img :src="data.media[0]" class="object-cover w-full h-full" />
               </div>
             </a>
             <details class="hover:cursor-pointer">

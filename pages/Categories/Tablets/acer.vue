@@ -7,7 +7,7 @@ const config = useRuntimeConfig();
 
 const brandName = "acer" || "Acer";
 
-const { data: response } = await useFetch(`${config.public.apiBase}/tablets?brand=${brandName}&fields[]=name&fields[]=price&fields[]=brand&per_page=4`);
+const { data: response } = await useFetch(`${config.public.apiBase}/tablets?brand=${brandName}&fields[]=name&fields[]=price&fields[]=brand`);
 
 </script>
 

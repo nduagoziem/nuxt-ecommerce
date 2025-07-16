@@ -25,7 +25,7 @@ const { data: response } = useFetch(`${config.public.apiBase}/accessories?hashid
                 <div class="flex flex-col md:flex-row md:space-x-16 md:space-y-0 space-y-4"
                     v-for="data in response.data" :key="data.hashid">
                     <section class="md:w-140 md:h-140 flex-shrink-0">
-                        <img :src="data.media[0].original_url" :alt="data.name" class="object-cover h-full w-full" />
+                        <img :src="data.media[0]" :alt="data.name" class="object-cover h-full w-full" />
                     </section>
 
                     <section class="flex-1 min-w-0">
@@ -41,10 +41,10 @@ const { data: response } = useFetch(`${config.public.apiBase}/accessories?hashid
                         <ToggleDescription :description="data.description" />
 
                         <div class="grid grid-cols-2 gap-8 mt-6">
-                            <div class="w-full flex flex-col" v-for="img in data.media.slice(1, 5)" :key="img.id">
+                            <div class="w-full flex flex-col" v-for="(img, index) in data.media.slice(1, 5)" :key="index">
                                 <div class="flex items-center justify-center w-40 h-40 md:w-58 md:h-46
                                 bg-gray-100 rounded overflow-hidden">
-                                    <img :src="img.original_url" :alt="data.collection_name"
+                                    <img :src="img" :alt="data.name"
                                         class="object-cover w-full h-full" />
                                 </div>
                             </div>

@@ -41,10 +41,10 @@ const { data: response } = useFetch(`${config.public.apiBase}/tablets?hashid=${r
                         <ToggleDescription :description="data.description" />
 
                         <div class="grid grid-cols-2 gap-8 mt-6">
-                            <div class="w-full flex flex-col" v-for="img in data.media.slice(1, 5)" :key="img.id">
+                            <div class="w-full flex flex-col" v-for="(img, index) in data.media.slice(1, 5)" :key="index">
                                 <div class="flex items-center justify-center w-40 h-40 md:w-58 md:h-46
                                 bg-gray-100 rounded overflow-hidden">
-                                    <img :src="img.original_url" :alt="data.collection_name"
+                                    <img :src="img" :alt="data.name"
                                         class="object-cover w-full h-full" />
                                 </div>
                             </div>
