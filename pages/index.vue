@@ -53,7 +53,7 @@ const { data: response } = await useFetch(`${config.public.apiBase}/accessories?
                         <a :href="`/categories/accessories/${data.hashid}`">
                             <div
                                 class="flex items-center justify-center w-40 h-40 md:w-52 md:h-52 xl:w-80 xl:h-80 bg-gray-100 rounded overflow-hidden">
-                                <img :src="data.media[0].original_url" :alt="data.name"
+                                <img :src="data.media[0].url" :alt="data.name"
                                     class="object-cover w-full h-full" />
                             </div>
 

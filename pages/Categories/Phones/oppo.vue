@@ -5,7 +5,7 @@ definePageMeta({
 
 const config = useRuntimeConfig();
 
-const brandName = "oppo" || "Oppo";
+const brandName = "oppo";
 
 const { data: response } = await useFetch(`${config.public.apiBase}/phones?brand=${brandName}&fields[]=name&fields[]=price&fields[]=brand`);
 
@@ -27,7 +27,7 @@ const { data: response } = await useFetch(`${config.public.apiBase}/phones?brand
                         <a :href="`/categories/phones/${data.brand}/${data.hashid}`">
                             <div
                                 class="flex items-center justify-center w-40 h-40 md:w-52 md:h-52 xl:w-72 xl:h-72 bg-gray-100 rounded overflow-hidden">
-                                <img :src="data.media[0]" :alt="data.name"
+                                <img :src="data.media[0].url" :alt="data.name"
                                     class="object-cover w-full h-full" />
                             </div>
 

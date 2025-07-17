@@ -25,7 +25,7 @@ const { data: response } = useFetch(`${config.public.apiBase}/accessories?hashid
                 <div class="flex flex-col md:flex-row md:space-x-16 md:space-y-0 space-y-4"
                     v-for="data in response.data" :key="data.hashid">
                     <section class="md:w-140 md:h-140 flex-shrink-0">
-                        <img :src="data.media[0]" :alt="data.name" class="object-cover h-full w-full" />
+                        <img :src="data.media[0].url" :alt="data.name" class="object-cover h-full w-full" />
                     </section>
 
                     <section class="flex-1 min-w-0">
