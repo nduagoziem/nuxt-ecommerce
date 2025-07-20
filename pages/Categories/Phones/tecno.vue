@@ -2,12 +2,24 @@
 definePageMeta({
     layout: "user-layout",
 });
+import { ref } from 'vue';
 
 const config = useRuntimeConfig();
 
 const brandName = "tecno";
 
-const { data: response } = await useFetch(`${config.public.apiBase}/phones?brand=${brandName}&fields[]=name&fields[]=price&fields[]=brand`);
+const response = ref(null);
+
+const { data } = await useFetch(`${config.public.apiBase}/phones?brand=${brandName}&fields[]=name&fields[]=price&fields[]=brand`);
+
+// Initial Page Load
+response.value = data.value
+
+// Pagination Request
+const paginationRequest = async (url) => {
+    const data = await $fetch(url)
+    return response.value = data
+}
 
 </script>
 
@@ -40,10 +52,9 @@ const { data: response } = await useFetch(`${config.public.apiBase}/phones?brand
                         </details>
                     </div>
                 </div>
-                <div class="flex justify-center mt-5 py-3">
-                    <Pagination />
+                <div class="flex justify-center pt-52 md:pt-3 mt-5">
+                    <Pagination :links="response.links" :meta="response.meta" @fetch="paginationRequest" />
                 </div>
-
             </div>
         </main>
     </UserLayout>

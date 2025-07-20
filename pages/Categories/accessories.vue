@@ -1,12 +1,24 @@
 <script setup>
 import SearchBar from "@/components/SearchBar.vue";
+import { ref } from "vue";
 
 definePageMeta({
     layout: "user-layout",
 });
 
 const config = useRuntimeConfig();
-const { data: response } = await useFetch(`${config.public.apiBase}/accessories?fields[]=name&fields[]=price`);
+
+const response = ref(null);
+
+// Initial Page Load
+const { data } = await useFetch(`${config.public.apiBase}/accessories?fields[]=name&fields[]=price`);
+response.value = data.value
+
+// Pagination Request
+const paginationRequest = async (url) => {
+    const data = await $fetch(url)
+    return response.value = data
+}
 </script>
 
 <template>
@@ -40,8 +52,8 @@ const { data: response } = await useFetch(`${config.public.apiBase}/accessories?
                     </div>
 
                 </div>
-                <div class="flex justify-center mt-5 py-3">
-                    <Pagination />
+                <div class="flex justify-center pt-52 md:pt-3 mt-5">
+                    <Pagination :links="response.links" :meta="response.meta" @fetch="paginationRequest" />
                 </div>
             </div>
         </main>
