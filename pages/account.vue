@@ -1,5 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import LoginComponent from '../components/Auth/LoginComponent.vue';
+import RegisterComponent from '../components/Auth/RegisterComponent.vue';
 
 definePageMeta({
     layout: "user-layout",
