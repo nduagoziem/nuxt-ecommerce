@@ -23,8 +23,8 @@ const paginationRequest = async (url) => {
 
 // Search Request
 const searchRequest = async (input) => {
-  const data = await $fetch(`${config.public.apiBase}/phones?brand=${brandName}&search=${input}`, {method: "GET"})
-  return response.value = data
+    const data = await $fetch(`${config.public.apiBase}/phones?brand=${brandName}&search=${input}&fields[]=name&fields[]=price&fields[]=brand`, { method: "GET" })
+    return response.value = data
 }
 
 </script>
@@ -38,7 +38,7 @@ const searchRequest = async (input) => {
 
         <main class="dark:text-gray-400">
             <div class="container mx-auto px-4">
-                <SearchBar class="mt-5 mb-6" :placeholder="'Search Samsung Phones...'" @search="searchRequest"/>
+                <SearchBar class="mt-5 mb-6" :placeholder="'Search Samsung Phones...'" @search="searchRequest" />
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 lg:gap-4 mb-4">
                     <div class="w-full flex flex-col" v-for="data in response.data" :key="data.hashid">
@@ -57,6 +57,7 @@ const searchRequest = async (input) => {
                         </details>
                     </div>
                 </div>
+                <p class=" dark:bg-red dark:text-red-100" v-if="response.data == []">Unavailable</p>
                 <div class="flex justify-center pt-52 md:pt-3 mt-5">
                     <Pagination :links="response.links" :meta="response.meta" @fetch="paginationRequest" />
                 </div>

@@ -22,7 +22,7 @@ const paginationRequest = async (url) => {
 
 // Search Request
 const searchRequest = async (input) => {
-    const data = await $fetch(`${config.public.apiBase}/tablets?brand=${brandName}&search=${input}`, { method: "GET" })
+    const data = await $fetch(`${config.public.apiBase}/tablets?brand=${brandName}&search=${input}&fields[]=name&fields[]=price&fields[]=brand`, { method: "GET" })
     return response.value = data
 }
 

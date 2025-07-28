@@ -22,8 +22,8 @@ const paginationRequest = async (url) => {
 
 // Search Request
 const searchRequest = async (input) => {
-  const data = await $fetch(`${config.public.apiBase}/phones?search=${input}`, {method: "GET"})
-  return response.value = data
+    const data = await $fetch(`${config.public.apiBase}/accessories?search=${input}`, { method: "GET" })
+    return response.value = data
 }
 
 </script>
@@ -37,7 +37,7 @@ const searchRequest = async (input) => {
 
         <main class="dark:text-gray-400">
             <div class="container mx-auto px-4">
-                <SearchBar class="mt-5 mb-6" :placeholder="'Looking for an accessory...'" @search="searchRequest"/>
+                <SearchBar class="mt-5 mb-6" :placeholder="'Looking for an accessory...'" @search="searchRequest" />
                 <h1 class="mb-10 text-center font-semibold dark:text-white">
                     SHOP PREMIUM TECH ACCESSORIES
                 </h1>
