@@ -20,6 +20,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       appURL: "http://localhost:3000",
+      apiAuth: "http://localhost:8000",
       apiBase: "http://localhost:8000/api",
       appName: "Gadgets Hub",
     },
