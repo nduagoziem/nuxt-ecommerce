@@ -46,11 +46,9 @@ onMounted(() => {
                     <DarkThemeIcon id="theme-toggle-dark-icon" class="w-5 h-5" />
                     <LightThemeIcon id="theme-toggle-light-icon" class="hidden w-5 h-5" />
                 </button> -->
-                <button data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example"
-                    data-drawer-placement="right" aria-controls="drawer-right-example">
+                <a href="/cart" target="_blank">
                     <CartIcon class="hover:cursor-pointer" />
-                </button>
-                <CartDrawer :id="'drawer-right-example'" />
+                </a>
                 <button data-collapse-toggle="mega-menu" type="button" @click="toggleMenu"
                     class="inline-flex items-center focus:outline-none p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100  dark:text-gray-400"
                     aria-controls="mega-menu" :aria-expanded="isMenuOpen">
@@ -315,7 +313,7 @@ onMounted(() => {
 
                     <!-- Menu 4 -->
                     <li>
-                        <a href="/account"
+                        <a href="/login"
                             class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#8047e5] md:p-0 dark:text-white md:dark:hover:text-[#8047e5] dark:hover:bg-gray-700 dark:hover:text-[#8047e5] md:dark:hover:bg-transparent dark:border-gray-700">
                             Login</a>
                     </li>
