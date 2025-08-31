@@ -1,12 +1,13 @@
 <script setup>
 definePageMeta({
-    layout: 'user-layout'
+    layout: 'user-layout',
+    middleware: guest,
 });
 
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import guest from '../middleware/guest';
 
 const showPassword = ref(false);
-
 const config = useRuntimeConfig();
 const email = ref("");
 const password = ref("");
@@ -15,32 +16,35 @@ const password = ref("");
  * Fetches CSRF Token from the backend before making further requests.
  * DO NOT SKIP THIS PROCESS.
  */
-await $fetch(`sanctum/csrf-cookie`, {
-    method: "GET",
-    credentials: "include",
-    baseURL: config.public.apiAuth,
-})
-
+onMounted(
+    async () => {
+        await $fetch(`sanctum/csrf-cookie`, {
+            method: "GET",
+            credentials: "include",
+            baseURL: config.public.apiAuth,
+        })
+    }
+)
 const login = async () => {
     try {
-        const response = await $fetch('/login', {
+        const response = await $fetch('/customer/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-XSRF-TOKEN': useCookie('XSRF-TOKEN').value,
             },
             credentials: 'include',
-            baseURL: config.public.apiBase,
+            baseURL: config.public.apiAuth,
             body: { email: email.value, password: password.value, },
         });
-        if (!response.success) {
-            alert(response.message);
-        } else {
-            alert(response.message);
-            email.value = "";
-            password.value = "";
-        }
+        alert(response.message);
+        email.value = "";
+        password.value = "";
+        return window.location.href = "/";
     } catch (err) {
+        if (err.status === 401) {
+            alert(err.data.message);
+        }
         if (err.status === 422 && err.data && err.data.error.email) {
             alert(err.data.error.email[0]);
         } else if (err.status === 422 && err.data && err.data.error.password) {
@@ -82,7 +86,8 @@ const login = async () => {
                         <div class="flex items-center">
                             <input id="showPassword" type="checkbox" v-model="showPassword"
                                 class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-[#8047e5] dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[#8047e5] dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
-                            <label for="showPassword" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Show
+                            <label for="showPassword"
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Show
                                 Password</label>
                         </div>
                         <a href="/register" class="text-sm text-blue-[#8047e5] hover:underline dark:text-[#8047e5]">
@@ -90,7 +95,7 @@ const login = async () => {
                         </a>
                     </div>
 
-                    <button type="submit" @click="login"
+                    <button type="submit"
                         class="text-white bg-[#8047e5] hover:cursor-pointer focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full uppercase px-5 py-2.5 text-center dark:bg-[#8047e5] dark:focus:ring-[#8047e5]">Login</button>
                 </form>
             </div>

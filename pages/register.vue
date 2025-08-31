@@ -1,10 +1,13 @@
 <script setup>
 definePageMeta({
-    layout: 'user-layout'
+    layout: 'user-layout',
+    middleware: guest,
 });
 
-import { useCookie } from 'nuxt/app';
+import { navigateTo, useCookie } from 'nuxt/app';
 import { ref } from 'vue';
+import { useAuthStore } from '../stores/auth';
+import guest from '../middleware/guest';
 
 const showPassword = ref(false);
 const config = useRuntimeConfig();
@@ -16,27 +19,33 @@ const password = ref("");
  * Fetches CSRF Token from the backend before making further requests.
  * DO NOT SKIP THIS PROCESS.
  */
-await $fetch(`sanctum/csrf-cookie`, {
-    credentials: "include",
-    baseURL: config.public.apiAuth,
-})
+onMounted(
+    async () => {
+        await $fetch(`sanctum/csrf-cookie`, {
+            method: "GET",
+            credentials: "include",
+            baseURL: config.public.apiAuth,
+        })
+    }
+)
 
 const register = async () => {
     try {
-        const response = await $fetch('/register', {
+        const response = await $fetch('/customer/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-XSRF-TOKEN': useCookie('XSRF-TOKEN').value,
             },
             credentials: 'include',
-            baseURL: config.public.apiBase,
+            baseURL: config.public.apiAuth,
             body: { name: name.value, email: email.value, password: password.value, },
         });
         alert(response.message);
         name.value = "";
         email.value = "";
         password.value = "";
+        return window.location.href = "/";
     } catch (err) {
         if (err.status === 422 && err.data && err.data.error.email) {
             alert(err.data.error.email[0]);
@@ -95,7 +104,7 @@ const register = async () => {
                         </a>
                     </div>
 
-                    <button type="submit" @click="register"
+                    <button type="submit"
                         class="text-white bg-[#8047e5] hover:cursor-pointer focus:ring-4 focus:outline-none focus:ring-[#8047e5] font-medium rounded-lg uppercase text-sm w-full px-5 py-2.5 text-center dark:bg-[#8047e5] dark:focus:ring-[#8047e5]">Create
                         Account</button>
                 </form>
