@@ -4,9 +4,8 @@ definePageMeta({
     middleware: guest,
 });
 
-import { navigateTo, useCookie } from 'nuxt/app';
+import { useCookie } from 'nuxt/app';
 import { ref } from 'vue';
-import { useAuthStore } from '../stores/auth';
 import guest from '../middleware/guest';
 
 const showPassword = ref(false);
@@ -99,9 +98,9 @@ const register = async () => {
                                 class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Show
                                 Password</label>
                         </div>
-                        <a href="/login" class="text-sm text-blue-[#8047e5] hover:underline dark:text-[#8047e5]">
+                        <NuxtLink to="/login" class="text-sm text-blue-[#8047e5] hover:underline dark:text-[#8047e5]">
                             Already registered?
-                        </a>
+                        </NuxtLink>
                     </div>
 
                     <button type="submit"

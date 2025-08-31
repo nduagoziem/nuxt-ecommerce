@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useFlowbite } from '~/composables/useFlowbite'
+import UserAvatar from './UserAvatar.vue';
+import { useAuthStore } from '../stores/auth';
 
 // if (import.meta.client) {
 //     const btn = document.getElementById("theme-toggle")
@@ -19,36 +21,43 @@ import { useFlowbite } from '~/composables/useFlowbite'
 // }
 
 const isMenuOpen = ref(false);
+const { isAuthenticated } = useAuthStore();
 
 const toggleMenu = () => {
-    isMenuOpen.value = !isMenuOpen.value
+    isMenuOpen.value = !isMenuOpen.value;
 };
 
 
 onMounted(() => {
     // Initialize Flowbite
     useFlowbite(() => {
-        initFlowbite()
+        initFlowbite();
     })
 
 });
+
+
 
 </script>
 
 <template>
     <nav class="bg-gray-200 border-gray-200 dark:bg-black" id="nav">
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
-            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <NuxtLink href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <ApplicationLogo />
-            </a>
+            </NuxtLink>
             <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <!-- <button id="theme-toggle" type="button" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">
                     <DarkThemeIcon id="theme-toggle-dark-icon" class="w-5 h-5" />
                     <LightThemeIcon id="theme-toggle-light-icon" class="hidden w-5 h-5" />
                 </button> -->
-                <a href="/cart" target="_blank">
+                <NuxtLink to="/cart">
                     <CartIcon class="hover:cursor-pointer" />
-                </a>
+                </NuxtLink>
+                <div>
+                    <UserAvatar v-if="isAuthenticated.customer" />
+                </div>
+
                 <button data-collapse-toggle="mega-menu" type="button" @click="toggleMenu"
                     class="inline-flex items-center focus:outline-none p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100  dark:text-gray-400"
                     aria-controls="mega-menu" :aria-expanded="isMenuOpen">
@@ -311,11 +320,11 @@ onMounted(() => {
                             Accessories</a>
                     </li>
 
-                    <!-- Menu 4 -->
-                    <li>
-                        <a href="/login"
+                    <!-- Menu 5 -->
+                    <li v-if="!isAuthenticated.customer">
+                        <NuxtLink to="/login"
                             class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#8047e5] md:p-0 dark:text-white md:dark:hover:text-[#8047e5] dark:hover:bg-gray-700 dark:hover:text-[#8047e5] md:dark:hover:bg-transparent dark:border-gray-700">
-                            Login</a>
+                            Login</NuxtLink>
                     </li>
                 </ul>
             </div>

@@ -90,9 +90,9 @@ const login = async () => {
                                 class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Show
                                 Password</label>
                         </div>
-                        <a href="/register" class="text-sm text-blue-[#8047e5] hover:underline dark:text-[#8047e5]">
+                        <NuxtLink href="/register" class="text-sm text-blue-[#8047e5] hover:underline dark:text-[#8047e5]">
                             Don't have an account yet?
-                        </a>
+                        </NuxtLink>
                     </div>
 
                     <button type="submit"
