@@ -1,14 +1,14 @@
 <script setup>
-// import { ref } from 'vue';
-
 
 const props = defineProps({
     name: String,
     email: String
 })
 
-// const nameInput = ref(props.name);
-// const emailInput = ref(props.email)
+const submit = () => {
+    alert("This feature will soon be available.")
+}
+
 </script>
 
 <template>
@@ -17,7 +17,7 @@ const props = defineProps({
             <!-- Profile Information Form -->
             <h2 class="text-[22px] font-medium mb-6 text-center dark:text-gray-400">Profile Information</h2>
 
-            <form class="max-w-md mx-auto">
+            <form class="max-w-md mx-auto" @submit.prevent="submit">
                 <div class="relative z-0 w-full mb-5 group">
                     <input type="name" name="floating_name" id="floating_name" v-model="props.name"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#8047e5] focus:outline-none focus:ring-0 focus:border-[#8047e5] peer"
