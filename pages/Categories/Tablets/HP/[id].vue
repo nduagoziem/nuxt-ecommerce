@@ -33,10 +33,7 @@ const { data: response } = useFetch(`${config.public.apiBase}/tablets?hashid=${r
                             class="mb-3 font-bold text-pretty text-2xl uppercase break-words whitespace-normal overflow-visible">
                             {{ data.name }}</h1>
                         <p class="font-bold text-xl text-pretty">₦{{ data.price }}</p>
-                        <button class="w-full mt-6 py-2 uppercase px-4 bg-[#8047e5] cursor-pointer text-white font-semibold rounded
-                            hover:bg-[#6f3ccf] transition-colors duration-300">
-                            Add to Cart
-                        </button>
+                        <AddToCartBtn />
 
                         <ToggleDescription :description="data.description" />
 
@@ -44,8 +41,7 @@ const { data: response } = useFetch(`${config.public.apiBase}/tablets?hashid=${r
                             <div class="w-full flex flex-col" v-for="img in data.media.slice(1, 5)" :key="img.id">
                                 <div class="flex items-center justify-center w-40 h-40 md:w-58 md:h-46
                                 bg-gray-100 rounded overflow-hidden">
-                                    <img :src="img.url" :alt="dat.name"
-                                        class="object-cover w-full h-full" />
+                                    <img :src="img.url" :alt="dat.name" class="object-cover w-full h-full" />
                                 </div>
                             </div>
                         </div>

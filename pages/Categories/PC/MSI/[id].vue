@@ -9,7 +9,35 @@ definePageMeta({
 const route = useRoute()
 const config = useRuntimeConfig()
 
-const { data: response } = useFetch(`${config.public.apiBase}/pcs?hashid=${route.params.id}`)
+const { data: response } = useFetch(`${config.public.apiBase}/pcs?hashid=${route.params.id}`);
+
+const { isAuthenticated } = useAuthStore();
+
+const addToCart = async () => {
+    if (!isAuthenticated.customer) {
+        alert("Please Login or create an account");
+        return;
+    }
+
+    try {
+        const res = await $fetch("/cart/add", {
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-XSRF-TOKEN': useCookie('XSRF-TOKEN').value,
+            },
+            baseURL: config.public.apiAuth,
+            method: "POST",
+            body: { productId: response.value?.data?.[0].id, name: response.value?.data?.[0].name, imagePath: response.value?.data?.[0].media[0]?.url },
+        })
+        if (res.success) {
+            alert(res.message)
+        }
+        else alert(res.error)
+    } catch (err) {
+        console.log(err, "Something went wrong");
+    }
+}
 
 </script>
 
@@ -33,10 +61,7 @@ const { data: response } = useFetch(`${config.public.apiBase}/pcs?hashid=${route
                             class="mb-3 font-bold text-pretty text-2xl uppercase break-words whitespace-normal overflow-visible">
                             {{ data.name }}</h1>
                         <p class="font-bold text-xl text-pretty">₦{{ data.price }}</p>
-                        <button class="w-full mt-6 py-2 uppercase px-4 bg-[#8047e5] cursor-pointer text-white font-semibold rounded
-                            hover:bg-[#6f3ccf] transition-colors duration-300">
-                            Add to Cart
-                        </button>
+                        <AddToCartBtn @click="addToCart"/>
 
                         <ToggleDescription :description="data.description" />
 
@@ -44,8 +69,7 @@ const { data: response } = useFetch(`${config.public.apiBase}/pcs?hashid=${route
                             <div class="w-full flex flex-col" v-for="img in data.media.slice(1, 5)" :key="img.id">
                                 <div class="flex items-center justify-center w-40 h-40 md:w-58 md:h-46
                                 bg-gray-100 rounded overflow-hidden">
-                                    <img :src="img.url" :alt="dat.name"
-                                        class="object-cover w-full h-full" />
+                                    <img :src="img.url" :alt="dat.name" class="object-cover w-full h-full" />
                                 </div>
                             </div>
                         </div>
