@@ -1,10 +1,13 @@
-// import { useFetch } from "nuxt/app";
 import { defineStore } from "pinia";
-import { reactive, ref } from "vue";
-import { useRuntimeConfig } from "nuxt/app";
+import { reactive } from "vue";
 
+/**
+ * The sole purpose of this store is for authentication
+ *  Do not use it for any other logic apart from this.
+ * The value of this store should only be set/changed in init-auth.global.js file
+ */
 export const useAuthStore = defineStore("auth", () => {
-  const isAuthenticated = reactive({customer: null});
+  const isAuthenticated = reactive({ customer: null });
 
   return {
     isAuthenticated,
