@@ -6,10 +6,38 @@ definePageMeta({
     layout: 'user-layout'
 });
 
-const route = useRoute()
-const config = useRuntimeConfig()
+const route = useRoute();
+const config = useRuntimeConfig();
 
-const { data: response } = useFetch(`${config.public.apiBase}/tablets?hashid=${route.params.id}`)
+const { data: response } = useFetch(`${config.public.apiBase}/tablets?hashid=${route.params.id}`);
+
+const { isAuthenticated } = useAuthStore();
+
+const addToCart = async () => {
+    if (!isAuthenticated.customer) {
+        alert("Please Login or create an account");
+        return;
+    }
+
+    try {
+        const res = await $fetch("/cart/add", {
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-XSRF-TOKEN': useCookie('XSRF-TOKEN').value,
+            },
+            baseURL: config.public.apiAuth,
+            method: "POST",
+            body: { productId: response.value?.data?.[0].id, name: response.value?.data?.[0].name, imagePath: response.value?.data?.[0].media[0]?.url },
+        })
+        if (res.success) {
+            alert(res.message)
+        }
+        else alert(res.error)
+    } catch (err) {
+        console.log(err, "Something went wrong");
+    }
+}
 
 </script>
 
@@ -33,7 +61,7 @@ const { data: response } = useFetch(`${config.public.apiBase}/tablets?hashid=${r
                             class="mb-3 font-bold text-pretty text-2xl uppercase break-words whitespace-normal overflow-visible">
                             {{ data.name }}</h1>
                         <p class="font-bold text-xl text-pretty">₦{{ data.price }}</p>
-                        <AddToCartBtn />
+                        <AddToCartBtn @click="addToCart"/>
 
                         <ToggleDescription :description="data.description" />
 
