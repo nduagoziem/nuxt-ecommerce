@@ -1,26 +1,12 @@
 <script setup>
-import { useRuntimeConfig } from 'nuxt/app';
+import { useCustomerInfoStore } from '@/stores/customerInfo';
+import { reloadNuxtApp, useRuntimeConfig } from 'nuxt/app';
 
-const config = useRuntimeConfig()
-
-const { data: customerData } = await useFetch("/customer", {
-    baseURL: config.public.apiAuth,
-    method: 'GET',
-    lazy: true,
-    server: false,
-    headers: {
-        'Content-Type': 'application/json',
-        'X-XSRF-TOKEN': useCookie('XSRF-TOKEN').value,
-    },
-    credentials: 'include',
-});
-
-const customer = computed(() => customerData.value?.message ?? null)
-
+const { customerInfo } = useCustomerInfoStore();
+const config = useRuntimeConfig();
 // helper for avatar initials
 const initials = computed(() => {
-    if (!customer.value?.name) return null;
-    return customer.value.name
+    return customerInfo.name
         .split(' ')
         .map(s => s[0]?.toUpperCase() ?? '')
         .join('')
@@ -28,7 +14,7 @@ const initials = computed(() => {
 })
 
 const logout = async () => {
-    const confirm = window.confirm("Sure you wannna logout?")
+    const confirm = window.confirm("Sure you wanna logout?")
     if (confirm) {
         try {
             const response = await $fetch('/customer/logout', {
@@ -41,7 +27,7 @@ const logout = async () => {
                 baseURL: config.public.apiAuth,
             });
             alert(response.message);
-            return window.location.href = "/login";
+            return reloadNuxtApp({ path: "/login" });
         } catch (err) {
             if (err) {
                 console.log(err)
@@ -64,8 +50,8 @@ const logout = async () => {
     <div id="userDropdown"
         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-800 dark:divide-gray-600">
         <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-            <div>{{ customer?.name }}</div>
-            <div class="font-medium truncate">{{ customer?.email }}</div>
+            <div class="font-medium truncate">{{ customerInfo.name }}</div>
+            <div class="truncate">{{ customerInfo.email }}</div>
         </div>
         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
             <li>
