@@ -6,7 +6,7 @@ definePageMeta({
 
 import { useCookie } from 'nuxt/app';
 import { ref } from 'vue';
-import guest from '../middleware/guest';
+import guest from '@/middleware/guest';
 
 const showPassword = ref(false);
 const config = useRuntimeConfig();
@@ -44,7 +44,7 @@ const register = async () => {
         name.value = "";
         email.value = "";
         password.value = "";
-        return window.location.href = "/";
+        reloadNuxtApp({ path: "/" });
     } catch (err) {
         if (err.status === 422 && err.data && err.data.error.email) {
             alert(err.data.error.email[0]);

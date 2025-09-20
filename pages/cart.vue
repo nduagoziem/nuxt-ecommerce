@@ -3,9 +3,9 @@ definePageMeta({
     layout: 'user-layout'
 });
 
-import { ref, onBeforeMount, computed, watch } from 'vue';
-import { useAuthStore } from '../stores/auth';
-import { useRuntimeConfig, useCookie } from 'nuxt/app';
+import { ref, onBeforeMount} from 'vue';
+import { useAuthStore } from '@/stores/auth';
+import { useRuntimeConfig, useCookie, navigateTo } from 'nuxt/app';
 
 const config = useRuntimeConfig();
 const { isAuthenticated } = useAuthStore();
@@ -25,7 +25,7 @@ onBeforeMount(async () => {
         response.value = res;
 
         // Make an array of quantities aligned with response.value.data index
-        const rr = inputQuantity.value = (res.data || []).map(item => Number(item.quantity ?? 0));
+        inputQuantity.value = (res.data || []).map(item => Number(item.quantity ?? 0));
     } catch (err) {
         console.log(err, "Something went wrong fetching cart");
     }
@@ -199,7 +199,7 @@ function formatNaira(n) {
                             }}</span>
                         <span v-else class="font-semibold">₦0</span>
                     </div>
-                    <button
+                    <button @click="() => {navigateTo('/checkout')}"
                         class="w-full bg-[#8047e5] text-white py-2 rounded hover:cursor-pointer hover:bg-[#6f3ccf] transition">Proceed
                         to
                         Checkout</button>

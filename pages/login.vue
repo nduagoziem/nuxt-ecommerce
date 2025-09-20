@@ -5,7 +5,8 @@ definePageMeta({
 });
 
 import { onMounted, ref } from 'vue';
-import guest from '../middleware/guest';
+import guest from '@/middleware/guest';
+import { reloadNuxtApp } from 'nuxt/app';
 
 const showPassword = ref(false);
 const config = useRuntimeConfig();
@@ -40,7 +41,7 @@ const login = async () => {
         alert(response.message);
         email.value = "";
         password.value = "";
-        return window.location.href = "/";
+        reloadNuxtApp({path: "/"});
     } catch (err) {
         if (err.status === 401) {
             alert(err.data.message);
@@ -90,7 +91,8 @@ const login = async () => {
                                 class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Show
                                 Password</label>
                         </div>
-                        <NuxtLink href="/register" class="text-sm text-blue-[#8047e5] hover:underline dark:text-[#8047e5]">
+                        <NuxtLink href="/register"
+                            class="text-sm text-blue-[#8047e5] hover:underline dark:text-[#8047e5]">
                             Don't have an account yet?
                         </NuxtLink>
                     </div>
