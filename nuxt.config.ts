@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: false },
   css: ["~/assets/css/main.css", "~/assets/css/input.css"],
-  modules: ["@pinia/nuxt",],
+  modules: ["@pinia/nuxt"],
   // plugins: ["pinia-plugin-persistedstate"],
 
   vue: {
@@ -21,9 +21,9 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      appURL: "http://localhost:3000",
-      apiAuth: "http://localhost:8000",
-      apiBase: "http://localhost:8000/api",
+      appURL: "https://gadgets-hub-seven.vercel.app",
+      apiAuth: "https://gadgets-hub.up.railway.app",
+      apiBase: "https://gadgets-hub.up.railway.app/api",
       appName: "Gadgets Hub",
     },
   },
